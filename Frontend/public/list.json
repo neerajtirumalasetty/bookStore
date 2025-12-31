@@ -1,0 +1,74 @@
+[
+    {
+        "id":1,
+        "Genere":"Mythology, Vengence, Action",
+        "title":"The Return of ParasuRama.",
+        "price":0,
+        "category":"Free",
+        "image":"/books/img_1.png"
+        
+    },
+    {
+        "id":6,
+        "Genere":"Sci-Fi, Supernatural Horror",
+        "title":"Stranger Things",
+        "price":24,
+        "category":"Paid",
+        "image":"/books/img_6.png"
+        
+    },
+    {
+        "id":2,
+        "Genere":"Dark, Psychological Thriller",
+        "title":"MasterChef",
+        "price":0,
+        "category":"Free",
+        "image":"/books/img_2.png"
+        
+    }, 
+    {
+        "id":8,
+        "Genere":"Mystry, Psychological Horror",
+        "title":"From",
+        "price":16,
+        "category":"Paid",
+        "image":"/books/img_8.png"
+        
+    },   
+    {
+        "id":3,
+        "Genere":"Rebel, Political-Drama",
+        "title":"Azadi",
+        "price":0,
+        "category":"Free",
+        "image":"/books/img_3.png"
+        
+    },
+    {
+        "id":5,
+        "Genere":"Epic Fantacy, Historical Drama",
+        "title":"Baahubali",
+        "price":20,
+        "category":"paid",
+        "image":"/books/img_5.png"
+        
+    },
+    {
+        "id":4,
+        "Genere":"War, Love",
+        "title":"Cyanide and Cinderella",
+        "price":0,
+        "category":"Free",
+        "image":"/books/img_4.png"
+        
+    },
+    {
+        "id":7,
+        "Genere":"Drama, Family Fiction",
+        "title":"Gifted",
+        "price":14,
+        "category":"Paid",
+        "image":"/books/img_7.png"
+        
+    }
+]
