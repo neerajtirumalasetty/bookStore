@@ -1,0 +1,29 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "mern project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neerajtirumalasetty/bookStore.git"
+  },
+  "author": "neeraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neerajtirumalasetty/bookStore/issues"
+  },
+  "homepage": "https://github.com/neerajtirumalasetty/bookStore#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.1",
+    "nodemon": "^3.1.11"
+  }
+}
