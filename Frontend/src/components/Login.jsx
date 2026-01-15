@@ -1,47 +1,113 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,Navigate,useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthProvider";
 
 function Login() {
+  const [authUser, setAuthUser] = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      const res = await axios.post(
+        "http://localhost:4001/user/login",
+        userInfo
+      );
+
+      toast.success("Login Successful");
+      localStorage.setItem("Users", JSON.stringify(res.data.user));
+      setAuthUser(res.data.user);
+      const modal = document.getElementById("my_modal_3");
+      if (modal) modal.close();
+      nav
+
+    } catch (err) {
+      if (err.response) {
+        toast.error("Error: " + err.response.data.message);
+      }
+    }
+  };
+
   return (
-    <>
-      <button
-        className="btn rounded-md bg-white text-black p-2 hover:cursor-pointer hover:text-black"
-        onClick={() => document.getElementById("my_modal_3").showModal()}
-      >
-        Login
-      </button>
-      <dialog id="my_modal_3" className="modal backdrop-blur-lg">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
-          <h3 className="font-bold text-lg flex items-center justify-center">Login</h3>
-          <div className="mt-2 space-y-2">
-            {/*Email*/}
-            <span>Email</span><br />
-            <input type="email" 
-            placeholder="Enter your Email"
-            className="w-100 p-2 border rounded-md mt-2 outline-none"/>
-            <br />
-             {/*Password*/}
-            <span>Password</span><br />
-            <input type="email" 
-            placeholder="Enter your Password"
-            className="w-100 p-2 border rounded-md mt-2 outline-none"/>
+    <dialog id="my_modal_3" className="modal">
+      <div className="modal-box">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Link
+            to="/"
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            onClick={() => document.getElementById("my_modal_3")?.close()}
+          >
+            ✕
+          </Link>
+
+          <h3 className="font-bold text-lg">Login</h3>
+
+          {/* Email */}
+          <div className="mt-4 space-x-2 space-y-2">
+            <span>Email</span>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-80 px-3 py-1 border rounded-md outline-none"
+              {...register("email", { required: true })}
+            />
+            {errors.email && (
+              <span className="text-sm text-red-500">
+                This field is required
+              </span>
+            )}
           </div>
-          <div className="flex mt-6 justify-around">
-            <button className="btn bg-blue-500 rounded-md">
+
+          {/* Password */}
+          <div className="mt-4 space-x-2 space-y-2">
+            <span>Password</span>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-80 px-3 py-1 border rounded-md outline-none"
+              {...register("password", { required: true })}
+            />
+            {errors.password && (
+              <span className="text-sm text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+
+          {/* Buttons */}
+          <div className="flex justify-around mt-6">
+            <button
+              type="submit"
+              className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200"
+            >
               Login
             </button>
-            <p className="mt-2">
-                  Not registered ? {""}<Link to="/signup" className="underline text-blue-300 cursor-pointer">Signup</Link>
+
+            <p>
+              Not registered?{" "}
+              <Link
+                to="/signup"
+                className="underline text-blue-500 cursor-pointer"
+              >
+                Signup
+              </Link>
             </p>
           </div>
-        </div>
-      </dialog>
-    </>
+        </form>
+      </div>
+    </dialog>
   );
 }
 
