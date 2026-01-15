@@ -24,7 +24,7 @@ function Signup() {
     };
 
     await axios
-      .post("http://localhost:4001/user/signup", userInfo)
+      .post("https://bookstore-gr4z.onrender.com/user/signup", userInfo)
       .then((res) => {
         if (res.data) {
           toast.success("Signup Successfully");
